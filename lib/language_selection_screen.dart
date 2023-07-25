@@ -4,12 +4,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:reeroute_vendor/SignupFLow/signup_screen.dart';
 
-
 class LanguageSelectionScreen extends StatefulWidget {
   const LanguageSelectionScreen({Key? key}) : super(key: key);
 
   @override
-  State<LanguageSelectionScreen> createState() => _LanguageSelectionScreenState();
+  State<LanguageSelectionScreen> createState() =>
+      _LanguageSelectionScreenState();
 }
 
 class _LanguageSelectionScreenState extends State<LanguageSelectionScreen> {
@@ -144,7 +144,7 @@ class _LanguageSelectionScreenState extends State<LanguageSelectionScreen> {
                       style: TextStyle(
                           color: Colors.white,
                           fontSize: 22,
-                          fontFamily: 'inter'),
+                          fontFamily: 'krub'),
                     ),
                   ),
                 ),

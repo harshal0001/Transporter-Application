@@ -14,118 +14,86 @@ class _InterestedBookingState extends State<InterestedBooking> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        backgroundColor: Colors.white,
-        titleSpacing: 0,
-        shadowColor: Colors.black54,
-        leading: InkWell(
-            onTap: () {
-              Navigator.pop(context);
-            },
-            child: Padding(
-              padding: const EdgeInsets.only(
-                left: 20,
-              ),
-              child: SvgPicture.asset('assets/chevron_left.svg'),
-            )),
-        // elevation: 1,
-        title: Text(
-          "Interested Bookings",
-          style: TextStyle(
-            fontFamily: 'krub',
-            fontSize: 18,
-            fontWeight: FontWeight.w600,
-            letterSpacing: 0.475,
-            color: Color(0xff2a4f6d),
-          ),
-        ),
-        actions: [
-          Padding(
-            padding: const EdgeInsets.only(right: 22),
-            child: SvgPicture.asset('assets/filter.svg'),
-          ),
-        ],
-      ),
-      body: Column(
-        children: [
-          Expanded(
-            child: Container(
-              decoration: BoxDecoration(
-                color: Colors.white,
-              ),
-              child: Column(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(left: 30, top: 35),
-                    child: Row(
-                      children: [
-                        Container(
-                          height: 8,
-                          width: 8,
-                          decoration: BoxDecoration(
-                            color: Color(0xff0acf83),
-                            borderRadius: BorderRadius.circular(4),
+      body: SafeArea(
+        child: Column(
+          children: [
+            Expanded(
+              child: Container(
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                ),
+                child: Column(
+                  children: [
+                    Container(
+                      width: double.infinity,
+                      height: 86,
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.only(
+                            bottomLeft: Radius.circular(12),
+                            bottomRight: Radius.circular(12)),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.black.withOpacity(0.25),
+                            blurRadius: 48,
+                            offset: Offset(0, 8),
                           ),
+                        ],
+                      ),
+                      child: Padding(
+                        padding:
+                            const EdgeInsets.only(left: 20, top: 30, right: 20),
+                        child: Column(
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(
+                                  children: [
+                                    InkWell(
+                                        onTap: () {
+                                          Navigator.pop(context);
+                                        },
+                                        child: SvgPicture.asset(
+                                            'assets/chevron_left.svg')),
+                                    const SizedBox(width: 6),
+                                    Text(
+                                      "Interested Bookings",
+                                      style: TextStyle(
+                                        fontFamily: 'rubik',
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w600,
+                                        color: Color(0xff2a4f6d),
+                                        letterSpacing: 0.643,
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                                SvgPicture.asset('assets/filter.svg'),
+                              ],
+                            ),
+                          ],
                         ),
-                        const SizedBox(width: 14),
-                        Text(
-                          "Mumbai",
-                          style: TextStyle(
-                            fontFamily: 'rubik',
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400,
-                            color: Color(0xff2a4f6d),
-                          ),
-                        ),
-                      ],
+                      ),
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 33),
-                    child: Row(
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Container(
-                          height: 42,
-                          width: 2,
-                          color: Color(0x1a2a4f6d),
-                        ),
-                      ],
-                    ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 30, right: 40),
-                    child: Row(
-                      children: [
-                        Container(
-                          height: 8,
-                          width: 8,
-                          color: Color(0xffea1414),
-                        ),
-                        const SizedBox(width: 14),
-                        Text(
-                          "Delhi",
-                          style: TextStyle(
-                            fontFamily: 'rubik',
-                            fontSize: 16,
-                            fontWeight: FontWeight.w400,
-                            color: Color(0xff2a4f6d),
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 118,
-                        ),
-                        InkWell(
-                          onTap: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => BookingDetails()),
-                            );
-                          },
+                        Padding(
+                          padding: const EdgeInsets.only(left: 30, top: 35),
                           child: Row(
                             children: [
+                              Container(
+                                height: 8,
+                                width: 8,
+                                decoration: BoxDecoration(
+                                  color: Color(0xff0acf83),
+                                  borderRadius: BorderRadius.circular(4),
+                                ),
+                              ),
+                              const SizedBox(width: 14),
                               Text(
-                                "View Details",
+                                "Mumbai",
                                 style: TextStyle(
                                   fontFamily: 'rubik',
                                   fontSize: 16,
@@ -133,22 +101,82 @@ class _InterestedBookingState extends State<InterestedBooking> {
                                   color: Color(0xff2a4f6d),
                                 ),
                               ),
-                              SvgPicture.asset('assets/chevron_right.svg'),
                             ],
                           ),
                         ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 33),
+                          child: Row(
+                            children: [
+                              Container(
+                                height: 42,
+                                width: 2,
+                                color: Color(0x1a2a4f6d),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 30, right: 40),
+                          child: Row(
+                            children: [
+                              Container(
+                                height: 8,
+                                width: 8,
+                                color: Color(0xffea1414),
+                              ),
+                              const SizedBox(width: 14),
+                              Text(
+                                "Delhi",
+                                style: TextStyle(
+                                  fontFamily: 'rubik',
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w400,
+                                  color: Color(0xff2a4f6d),
+                                ),
+                              ),
+                              const SizedBox(
+                                width: 118,
+                              ),
+                              InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => BookingDetails()),
+                                  );
+                                },
+                                child: Row(
+                                  children: [
+                                    Text(
+                                      "View Details",
+                                      style: TextStyle(
+                                        fontFamily: 'rubik',
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.w400,
+                                        color: Color(0xff2a4f6d),
+                                      ),
+                                    ),
+                                    SvgPicture.asset(
+                                        'assets/chevron_right.svg'),
+                                  ],
+                                ),
+                              ),
+                            ],
+                          ),
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 12, right: 22),
+                          child: Divider(),
+                        ),
                       ],
                     ),
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 12, right: 22),
-                    child: Divider(),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
       bottomNavigationBar: BottomNavigationBar(
         currentIndex: _currentIndex,
@@ -186,3 +214,8 @@ class _InterestedBookingState extends State<InterestedBooking> {
     );
   }
 }
+
+/*
+
+                
+ */
