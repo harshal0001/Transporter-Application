@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:reeroute_vendor/BottomNavBar/pages/notifications.dart';
 import 'package:reeroute_vendor/Home/prederred_city_screen.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -18,7 +19,14 @@ class HomeScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(right: 26.0),
             child: InkWell(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Notifications(),
+                  ),
+                );
+              },
               child: Image.asset(
                 'assets/notification.png',
                 width: 32,

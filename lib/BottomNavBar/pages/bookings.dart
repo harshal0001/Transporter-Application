@@ -4,6 +4,7 @@ import 'package:reeroute_vendor/Bookings/assigned_booking_screen.dart';
 import 'package:reeroute_vendor/Bookings/cancelled_booking.dart';
 import 'package:reeroute_vendor/Bookings/completed_booking_screen.dart';
 import 'package:reeroute_vendor/Bookings/interested_booking_screen.dart';
+import 'package:reeroute_vendor/BottomNavBar/pages/notifications.dart';
 
 class BookingScreen extends StatelessWidget {
   const BookingScreen({super.key});
@@ -21,7 +22,14 @@ class BookingScreen extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.only(right: 26.0),
             child: InkWell(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => Notifications(),
+                  ),
+                );
+              },
               child: Image.asset(
                 'assets/notification.png',
                 width: 32,

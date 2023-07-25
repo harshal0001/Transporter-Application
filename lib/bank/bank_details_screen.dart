@@ -1,10 +1,37 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:reeroute_vendor/BottomNavBar/bottom_nav_bar.dart';
 import 'package:reeroute_vendor/components/buttons.dart';
 
-class BankDetails extends StatelessWidget {
+import '../theme.dart';
+
+class BankDetails extends StatefulWidget {
   const BankDetails({super.key});
+
+  @override
+  State<BankDetails> createState() => _BankDetailsState();
+}
+
+class _BankDetailsState extends State<BankDetails> {
+  File? _image;
+
+  Future pickImage(ImageSource source) async {
+    try {
+      final image = await ImagePicker().pickImage(source: source);
+      if (image == null) return;
+
+      final imageTemp = File(image.path);
+      setState(() {
+        this._image = imageTemp;
+      });
+    } on PlatformException catch (e) {
+      print('Failed to pick an image: $e');
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,7 +68,7 @@ class BankDetails extends StatelessWidget {
                   fontFamily: 'rubik',
                   fontWeight: FontWeight.w500,
                   letterSpacing: 0.475,
-                  color: Color(0xff2a4f6d),
+                  color: primaryColor,
                 ),
               ),
               const SizedBox(height: 55),
@@ -52,7 +79,7 @@ class BankDetails extends StatelessWidget {
                   fontFamily: 'rubik',
                   fontWeight: FontWeight.w400,
                   letterSpacing: 0.475,
-                  color: Color(0xff2a4f6d),
+                  color: primaryColor,
                 ),
               ),
               const SizedBox(height: 18),
@@ -74,10 +101,18 @@ class BankDetails extends StatelessWidget {
                         child: TextFormField(
                           keyboardType: TextInputType.name,
                           showCursor: false,
-                          style: fontStyle_2(),
+                          style: TextStyle(
+                            fontFamily: 'rubik',
+                            fontSize: 18,
+                            color: primaryColor,
+                          ),
                           decoration: InputDecoration(
                             hintText: "State Bank of India",
-                            hintStyle: hintFontStyle(),
+                            hintStyle: TextStyle(
+                              fontFamily: 'rubik',
+                              fontSize: 18,
+                              color: Color(0x332a4f6d),
+                            ),
                             border: InputBorder.none,
                           ),
                         ),
@@ -95,7 +130,7 @@ class BankDetails extends StatelessWidget {
                   fontFamily: 'rubik',
                   fontWeight: FontWeight.w400,
                   letterSpacing: 0.475,
-                  color: Color(0xff2a4f6d),
+                  color: primaryColor,
                 ),
               ),
               const SizedBox(height: 18),
@@ -114,10 +149,18 @@ class BankDetails extends StatelessWidget {
                   child: TextFormField(
                     keyboardType: TextInputType.name,
                     showCursor: false,
-                    style: fontStyle_2(),
+                    style: TextStyle(
+                      fontFamily: 'rubik',
+                      fontSize: 18,
+                      color: primaryColor,
+                    ),
                     decoration: InputDecoration(
                       hintText: "Enter bank account number",
-                      hintStyle: hintFontStyle(),
+                      hintStyle: TextStyle(
+                        fontFamily: 'rubik',
+                        fontSize: 18,
+                        color: Color(0x332a4f6d),
+                      ),
                       border: InputBorder.none,
                     ),
                   ),
@@ -131,7 +174,7 @@ class BankDetails extends StatelessWidget {
                   fontFamily: 'rubik',
                   fontWeight: FontWeight.w400,
                   letterSpacing: 0.475,
-                  color: Color(0xff2a4f6d),
+                  color: primaryColor,
                 ),
               ),
               const SizedBox(height: 18),
@@ -150,10 +193,18 @@ class BankDetails extends StatelessWidget {
                   child: TextFormField(
                     keyboardType: TextInputType.name,
                     showCursor: false,
-                    style: fontStyle_2(),
+                    style: TextStyle(
+                      fontFamily: 'rubik',
+                      fontSize: 18,
+                      color: primaryColor,
+                    ),
                     decoration: InputDecoration(
                       hintText: "Enter your bank ifsc code",
-                      hintStyle: hintFontStyle(),
+                      hintStyle: TextStyle(
+                        fontFamily: 'rubik',
+                        fontSize: 18,
+                        color: Color(0x332a4f6d),
+                      ),
                       border: InputBorder.none,
                     ),
                   ),
@@ -167,7 +218,7 @@ class BankDetails extends StatelessWidget {
                   fontFamily: 'rubik',
                   fontWeight: FontWeight.w400,
                   letterSpacing: 0.475,
-                  color: Color(0xff2a4f6d),
+                  color: primaryColor,
                 ),
               ),
               const SizedBox(height: 18),
@@ -178,24 +229,29 @@ class BankDetails extends StatelessWidget {
                   border: Border.all(
                     width: 1,
                     style: BorderStyle.solid,
-                    color: Color(0xfff79633),
+                    color: secondaryColor,
                   ),
                 ),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Text(
-                      "Upload Cancel cheque",
-                      style: TextStyle(
-                        fontFamily: 'inter',
-                        fontSize: 18,
-                        color: Color(0xfff79633),
-                        letterSpacing: 0.475,
+                child: InkWell(
+                  onTap: () {
+                    pickImage(ImageSource.gallery);
+                  },
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        "Upload Cancel cheque",
+                        style: TextStyle(
+                          fontFamily: 'inter',
+                          fontSize: 18,
+                          color: secondaryColor,
+                          letterSpacing: 0.475,
+                        ),
                       ),
-                    ),
-                    const SizedBox(width: 20),
-                    SvgPicture.asset('assets/upload.svg'),
-                  ],
+                      const SizedBox(width: 20),
+                      SvgPicture.asset('assets/upload.svg'),
+                    ],
+                  ),
                 ),
               ),
               const SizedBox(height: 160),
@@ -205,29 +261,4 @@ class BankDetails extends StatelessWidget {
       ),
     );
   }
-}
-
-TextStyle fontStyle_2() {
-  return const TextStyle(
-    fontFamily: 'rubik',
-    fontSize: 18,
-    color: Color(0xff2a4f6d),
-  );
-}
-
-TextStyle hintFontStyle() {
-  return const TextStyle(
-    fontFamily: 'rubik',
-    fontSize: 18,
-    color: Color(0x332a4f6d),
-  );
-}
-
-TextStyle fontStyle_1() {
-  return const TextStyle(
-    fontFamily: 'rubik',
-    fontSize: 18,
-    fontWeight: FontWeight.w500,
-    color: Color(0xff2a4f6d),
-  );
 }

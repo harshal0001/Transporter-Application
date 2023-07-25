@@ -39,7 +39,7 @@ class _BookingDetailsState extends State<BookingDetails> {
                       ),
                       child: Padding(
                         padding:
-                            const EdgeInsets.only(left: 22, top: 30, right: 22),
+                            const EdgeInsets.only(left: 22, top: 20, right: 22),
                         child: Column(
                           children: [
                             Row(
@@ -281,7 +281,15 @@ class _BookingDetailsState extends State<BookingDetails> {
                       ),
                     ),
                     InkWell(
-                      onTap: () {},
+                      onTap: () {
+                        showDialog(
+                          context: context,
+                          builder: (BuildContext context) => CancelInterest(
+                            width: 414,
+                            height: 286,
+                          ),
+                        );
+                      },
                       child: Container(
                         width: 354,
                         decoration: BoxDecoration(
@@ -343,6 +351,126 @@ class _BookingDetailsState extends State<BookingDetails> {
             backgroundColor: Colors.white,
           ),
         ],
+      ),
+    );
+  }
+}
+
+class CancelInterest extends StatelessWidget {
+  final double width;
+  final double height;
+
+  CancelInterest({required this.width, required this.height});
+
+  void _logout(BuildContext context) {
+    //TODO Logout function
+    Navigator.pop(context);
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      insetPadding: EdgeInsets.symmetric(
+          horizontal: 16.0), // Set the inset padding to control width
+      content: Container(
+        width: width,
+        height: height,
+        child: Column(
+          // crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: [
+            const SizedBox(height: 64),
+            Text(
+              'Are you sure?',
+              style: TextStyle(
+                color: Color(0xff2A4F6D),
+                fontFamily: 'rubik',
+                fontSize: 18,
+                fontWeight: FontWeight.w500,
+                letterSpacing: 0.475,
+              ),
+            ),
+            const SizedBox(height: 16),
+            Text(
+              'Lorem Ipsum is simply dummy text of the\nprinting and typesetting industry.',
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                color: Color(0xff2A4F6D),
+                fontFamily: 'krub',
+                fontSize: 12,
+                fontWeight: FontWeight.w400,
+                letterSpacing: 0.475,
+              ),
+            ),
+            const SizedBox(height: 64),
+            Row(
+              children: [
+                Expanded(
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.pop(context);
+                    },
+                    child: Container(
+                      height: 54,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(12),
+                        border: Border.all(
+                          width: 1,
+                          style: BorderStyle.solid,
+                          color: Color(0xfff79633),
+                        ),
+                      ),
+                      child: Center(
+                        child: Text(
+                          "Cancel",
+                          style: TextStyle(
+                            fontFamily: 'inter',
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500,
+                            color: Color(0xfff79633),
+                            letterSpacing: 0.475,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                const SizedBox(width: 20),
+                Expanded(
+                  child: InkWell(
+                    onTap: () {
+                      // Navigator.push(
+                      //   context,
+                      //   MaterialPageRoute(
+                      //     builder: (context) => LanguageSelectionScreen(),
+                      //   ),
+                      // );
+                    },
+                    child: Container(
+                      height: 54,
+                      decoration: BoxDecoration(
+                        color: Color(0xfff79633),
+                        borderRadius: BorderRadius.circular(12),
+                      ),
+                      child: Center(
+                        child: Text(
+                          "Yes",
+                          style: TextStyle(
+                            fontFamily: 'inter',
+                            fontSize: 18,
+                            fontWeight: FontWeight.w500,
+                            color: Colors.white,
+                            letterSpacing: 0.475,
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                )
+              ],
+            ),
+            const SizedBox(height: 30),
+          ],
+        ),
       ),
     );
   }

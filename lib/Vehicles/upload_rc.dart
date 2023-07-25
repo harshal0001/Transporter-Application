@@ -1,20 +1,22 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:flutter_svg/flutter_svg.dart';
-import 'package:image_picker/image_picker.dart';
-import 'package:reeroute_vendor/kyc/pan_back_side_screen.dart';
 import 'dart:io';
 
-class PanCardFrontSide extends StatefulWidget {
-  const PanCardFrontSide({super.key});
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:image_picker/image_picker.dart';
+import 'package:reeroute_vendor/Vehicles/rc_done.dart';
+
+class UploadRc extends StatefulWidget {
+  const UploadRc({super.key});
 
   @override
-  State<PanCardFrontSide> createState() => _PanCardFrontSideState();
+  State<UploadRc> createState() => _UploadRcState();
 }
 
-class _PanCardFrontSideState extends State<PanCardFrontSide> {
+class _UploadRcState extends State<UploadRc> {
   bool upload = true;
   File? _image;
+  @override
   Future pickImage(ImageSource source) async {
     try {
       final image = await ImagePicker().pickImage(source: source);
@@ -42,51 +44,50 @@ class _PanCardFrontSideState extends State<PanCardFrontSide> {
       body: Container(
         color: Colors.white,
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Padding(
-              padding: const EdgeInsets.only(
-                left: 105,
-                right: 106,
-                top: 63,
-                bottom: 36,
-              ),
+              padding: const EdgeInsets.only(top: 88, left: 30),
               child: _image != null
                   ? Image.file(
                       _image!,
-                      height: 126,
-                      width: 202,
+                      height: 84,
+                      width: 150,
                       fit: BoxFit.cover,
                     )
                   : Image.asset(
-                      'assets/pan_card_front.png',
-                      height: 126,
-                      width: 202,
+                      'assets/rcPermit.png',
+                      height: 84,
+                      width: 150,
                     ),
             ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  "Upload front side of your PAN",
-                  style: TextStyle(
-                    fontFamily: 'rubik',
-                    fontSize: 18,
-                    fontWeight: FontWeight.w500,
-                    letterSpacing: 0.475,
-                    color: Color(0xff2a4f6d),
+            Padding(
+              padding: const EdgeInsets.only(top: 30, left: 27),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    "Upload RC Permit",
+                    style: TextStyle(
+                      fontFamily: 'rubik',
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500,
+                      letterSpacing: 0.475,
+                      color: Color(0xff2a4f6d),
+                    ),
                   ),
-                ),
-                const SizedBox(height: 4),
-                Text(
-                  "Lorem Ipsum is simply dummy text of the printing\nand typesetting industry.",
-                  style: TextStyle(
-                    fontFamily: 'krub',
-                    fontSize: 12,
-                    letterSpacing: 0.475,
-                    color: Color(0xff2a4f6d),
+                  const SizedBox(height: 4),
+                  Text(
+                    "Lorem Ipsum is simply dummy text of the printing\nand typesetting industry.",
+                    style: TextStyle(
+                      fontFamily: 'krub',
+                      fontSize: 12,
+                      letterSpacing: 0.475,
+                      color: Color(0xff2a4f6d),
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ],
         ),
@@ -150,7 +151,7 @@ class _PanCardFrontSideState extends State<PanCardFrontSide> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                              builder: (context) => PanCardBackSide(),
+                              builder: (context) => RcDone(),
                             ),
                           );
                         },
