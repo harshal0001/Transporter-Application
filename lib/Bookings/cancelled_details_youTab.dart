@@ -54,7 +54,7 @@ class _CancelledBookingDetailsState extends State<CancelledBookingDetails> {
                                           'assets/chevron_left.svg')),
                                   const SizedBox(width: 6),
                                   Text(
-                                    "Bookings Details",
+                                    "Details",
                                     style: TextStyle(
                                       fontFamily: 'rubik',
                                       fontSize: 24,

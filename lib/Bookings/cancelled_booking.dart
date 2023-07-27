@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:reeroute_vendor/Bookings/sales_team.dart';
+import 'package:reeroute_vendor/Bookings/you_tab.dart';
+import 'package:reeroute_vendor/theme.dart';
 
-import 'cancelled_details.dart';
+import 'cancelled_details_youTab.dart';
 import 'completed_details.dart';
 
 class CancelledBooking extends StatefulWidget {
@@ -11,179 +14,94 @@ class CancelledBooking extends StatefulWidget {
   State<CancelledBooking> createState() => _CancelledBookingState();
 }
 
-class _CancelledBookingState extends State<CancelledBooking> {
+class _CancelledBookingState extends State<CancelledBooking>
+    with TickerProviderStateMixin {
   int _currentIndex = 1;
   @override
   Widget build(BuildContext context) {
+    TabController _tabController = TabController(length: 2, vsync: this);
     return Scaffold(
       body: SafeArea(
         child: Column(
           children: [
-            Expanded(
-              child: Container(
-                decoration: BoxDecoration(
-                  color: Colors.white,
+            Container(
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  bottomLeft: Radius.circular(12),
+                  bottomRight: Radius.circular(12),
                 ),
+                boxShadow: [
+                  BoxShadow(
+                    color: Colors.black.withOpacity(0.25),
+                    blurRadius: 48,
+                    offset: Offset(0, 8),
+                  ),
+                ],
+              ),
+              child: Padding(
+                padding: const EdgeInsets.only(left: 22, right: 22, top: 30),
                 child: Column(
                   children: [
-                    Container(
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.only(
-                            bottomLeft: Radius.circular(12),
-                            bottomRight: Radius.circular(12)),
-                        boxShadow: [
-                          BoxShadow(
-                            color: Colors.black.withOpacity(0.25),
-                            blurRadius: 48,
-                            offset: Offset(0, 8),
-                          ),
-                        ],
-                      ),
-                      child: Padding(
-                        padding: const EdgeInsets.only(
-                            left: 20, top: 20, bottom: 20, right: 20),
-                        child: Column(
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
                           children: [
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Row(
-                                  children: [
-                                    InkWell(
-                                        onTap: () {
-                                          Navigator.pop(context);
-                                        },
-                                        child: SvgPicture.asset(
-                                            'assets/chevron_left.svg')),
-                                    const SizedBox(width: 6),
-                                    Text(
-                                      "Cancelled Bookings",
-                                      style: TextStyle(
-                                        fontFamily: 'rubik',
-                                        fontSize: 24,
-                                        fontWeight: FontWeight.w500,
-                                        color: Color(0xff2a4f6d),
-                                        letterSpacing: 0.643,
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                                Row(
-                                  children: [
-                                    SvgPicture.asset('assets/filter.svg'),
-                                  ],
-                                ),
-                              ],
+                            InkWell(
+                                onTap: () {
+                                  Navigator.pop(context);
+                                },
+                                child: SvgPicture.asset(
+                                    'assets/chevron_left.svg')),
+                            const SizedBox(width: 6),
+                            Text(
+                              "Cancelled Bookings",
+                              style: TextStyle(
+                                fontFamily: 'rubik',
+                                fontSize: 24,
+                                fontWeight: FontWeight.w500,
+                                color: Color(0xff2a4f6d),
+                                letterSpacing: 0.643,
+                              ),
                             ),
                           ],
                         ),
-                      ),
+                        Row(
+                          children: [
+                            SvgPicture.asset('assets/filter.svg'),
+                          ],
+                        ),
+                      ],
                     ),
-                    Column(
-                      children: [
-                        Padding(
-                          padding: const EdgeInsets.only(
-                              left: 30, top: 40, right: 50),
-                          child: Row(
-                            children: [
-                              Container(
-                                height: 8,
-                                width: 8,
-                                decoration: BoxDecoration(
-                                  color: Color(0xff0acf83),
-                                  borderRadius: BorderRadius.circular(4),
-                                ),
-                              ),
-                              const SizedBox(width: 14),
-                              Text(
-                                "Mumbai",
-                                style: TextStyle(
-                                  fontFamily: 'rubik',
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w400,
-                                  color: Color(0xff2a4f6d),
-                                ),
-                              ),
-                            ],
-                          ),
+                    const SizedBox(height: 36),
+                    TabBar(
+                      indicatorColor: secondaryColor,
+                      indicatorWeight: 4,
+                      unselectedLabelColor: Color(0xff777777),
+                      labelColor: secondaryColor,
+                      indicatorSize: TabBarIndicatorSize.label,
+                      controller: _tabController,
+                      tabs: [
+                        Tab(
+                          child: Text('By You'),
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 33),
-                          child: Row(
-                            children: [
-                              Container(
-                                height: 42,
-                                width: 2,
-                                color: Color(0x1a2a4f6d),
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 30, right: 36),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                children: [
-                                  Container(
-                                    height: 8,
-                                    width: 8,
-                                    color: Color(0xffea1414),
-                                  ),
-                                  const SizedBox(width: 14),
-                                  Text(
-                                    "Delhi",
-                                    style: TextStyle(
-                                      fontFamily: 'rubik',
-                                      fontSize: 16,
-                                      fontWeight: FontWeight.w400,
-                                      color: Color(0xff2a4f6d),
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  InkWell(
-                                    onTap: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                CancelledBookingDetails()),
-                                      );
-                                    },
-                                    child: Row(
-                                      children: [
-                                        Text(
-                                          "View Details",
-                                          style: TextStyle(
-                                            fontFamily: 'rubik',
-                                            fontSize: 12,
-                                            fontWeight: FontWeight.w400,
-                                            color: Color(0xff2a4f6d),
-                                          ),
-                                        ),
-                                        SvgPicture.asset(
-                                            'assets/chevron_right.svg'),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ],
-                          ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.only(left: 12, right: 22),
-                          child: Divider(),
+                        Tab(
+                          child: Text('By Sales Team'),
                         ),
                       ],
                     ),
                   ],
                 ),
+              ),
+            ),
+            Expanded(
+              child: TabBarView(
+                controller: _tabController,
+                children: [
+                  YouTab(),
+                  SalesTeam(),
+                ],
               ),
             ),
           ],
