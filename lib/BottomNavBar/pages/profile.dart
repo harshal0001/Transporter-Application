@@ -8,8 +8,6 @@ import 'package:reeroute_vendor/Profile/select_language.dart';
 import 'package:reeroute_vendor/Vehicles/manage_vehicles.dart';
 import 'package:reeroute_vendor/language_selection_screen.dart';
 
-import '../../Vehicles/manage_vehicles.dart';
-
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
 

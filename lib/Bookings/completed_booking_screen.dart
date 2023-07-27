@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:reeroute_vendor/Bookings/completed_details.dart';
 
-import 'booking_details_screen.dart';
-
 class CompletedBooking extends StatefulWidget {
   const CompletedBooking({super.key});
 

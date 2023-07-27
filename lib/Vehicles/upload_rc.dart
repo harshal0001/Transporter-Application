@@ -16,7 +16,6 @@ class UploadRc extends StatefulWidget {
 class _UploadRcState extends State<UploadRc> {
   bool upload = true;
   File? _image;
-  @override
   Future pickImage(ImageSource source) async {
     try {
       final image = await ImagePicker().pickImage(source: source);

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import 'package:get/get_navigation/src/root/get_material_app.dart';
-import 'package:reeroute_vendor/BottomNavBar/bottom_nav_bar.dart';
+
 import 'package:reeroute_vendor/language_selection_screen.dart';
 
 import 'locale_string.dart';
@@ -24,7 +24,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: BottomNavBar(),
+      home: LanguageSelectionScreen(),
     );
   }
 }

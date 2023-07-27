@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:reeroute_vendor/Vehicles/vehicle_added.dart';
-import 'package:reeroute_vendor/bank/bank_details_screen.dart';
 
 class RcDone extends StatelessWidget {
   const RcDone({super.key});

@@ -3,7 +3,6 @@ import 'package:flutter_svg/svg.dart';
 import 'package:reeroute_vendor/Bookings/my_trips.dart';
 
 import 'assign_driver.dart';
-import 'completed_details.dart';
 
 class AssignedBooking extends StatefulWidget {
   const AssignedBooking({super.key});

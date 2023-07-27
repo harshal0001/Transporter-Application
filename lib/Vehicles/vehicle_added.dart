@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:reeroute_vendor/BottomNavBar/pages/home.dart';
-import 'package:reeroute_vendor/bank/bank_details_screen.dart';
 
 import '../components/buttons.dart';
 

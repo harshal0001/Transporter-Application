@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 
 import 'cancelled_details_salesTab.dart';
-import 'cancelled_details_youTab.dart';
 
 class SalesTeam extends StatelessWidget {
   const SalesTeam({super.key});

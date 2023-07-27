@@ -4,9 +4,6 @@ import 'package:reeroute_vendor/Bookings/sales_team.dart';
 import 'package:reeroute_vendor/Bookings/you_tab.dart';
 import 'package:reeroute_vendor/theme.dart';
 
-import 'cancelled_details_youTab.dart';
-import 'completed_details.dart';
-
 class CancelledBooking extends StatefulWidget {
   const CancelledBooking({super.key});
 

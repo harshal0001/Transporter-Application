@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:reeroute_vendor/Drivers/add_driver.dart';
 import 'package:reeroute_vendor/Drivers/driver_details.dart';
-import 'package:reeroute_vendor/Drivers/edit_driver_details.dart';
 
 import '../components/buttons.dart';
 
